@@ -62,7 +62,8 @@ void q5()
 //Sur une liste de personne: Afficher que les personnes qui ont leurs noms qui commence par D
 void q6()
 {
-	List<Personne> liste = listePersonnes.Where(p => p.Nom.StartsWith("D")).ToList();
+	List<Personne> liste = listePersonnes.Where(p => p.Nom.ToUpper().StartsWith("D")).ToList();
+	//List<Personne> liste = listePersonnes.Where(p => p.Nom.StartsWith("D", true, null)).ToList();
 	foreach (var p in liste) Console.WriteLine(p);
 }
 //q6();
@@ -120,7 +121,8 @@ void q13()
 	var listeGroup = listePersonnes.GroupBy(p => p.Prenom);
 	foreach (var group in listeGroup)
 	{
-		foreach (var p in group)
+        Console.WriteLine(group.Key);
+        foreach (var p in group)
 		{
 			Console.WriteLine(p);
 		}
